@@ -1,0 +1,16 @@
+.bootstrap-tagsinput .tag {
+    margin-right: 2px;
+    color: white;
+    background: #007bff !important;
+    padding: 2px 10px !important;
+    border-radius: 34px !important;
+}
+
+.error {
+    color: #ff0000;
+    font-size: 14px;
+}
+
+.video {
+    width: 100%;
+}
