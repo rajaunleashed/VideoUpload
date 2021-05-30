@@ -35,21 +35,21 @@ class ConvertionVideo implements ShouldQueue
     public function handle()
     {
         try {
-//            $lowBitrate = (new X264())->setKiloBitrate(250);
-//            $midBitrate = (new X264())->setKiloBitrate(500);
-//            $highBitrate = (new X264())->setKiloBitrate(1000);
-//
-//            $filepath = explode('/', $this->video->full_path);
-//            $filename = $filepath[count($filepath) - 1];
-//            $filename = explode('.', $filename)[0];
-//
-//            FFMpeg::fromDisk('public')
-//                ->open($this->video->full_path)
-//                ->exportForHLS()
-//                ->addFormat($lowBitrate)
-//                ->addFormat($midBitrate)
-//                ->addFormat($highBitrate)
-//                ->save($filename . '.m3u8');
+            $lowBitrate = (new X264())->setKiloBitrate(250);
+            $midBitrate = (new X264())->setKiloBitrate(500);
+            $highBitrate = (new X264())->setKiloBitrate(1000);
+
+            $filepath = explode('/', $this->video->full_path);
+            $filename = $filepath[count($filepath) - 1];
+            $filename = explode('.', $filename)[0];
+
+            FFMpeg::fromDisk('public')
+                ->open($this->video->full_path)
+                ->exportForHLS()
+                ->addFormat($lowBitrate)
+                ->addFormat($midBitrate)
+                ->addFormat($highBitrate)
+                ->save($filename . '.m3u8');
 
             $this->video->conversion_status = 1;
             $this->video->save();
