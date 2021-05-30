@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b11a6e5a-470d-4425-acc8-0cddf4cb2067" name="fiverr" url="http://ftp.insanelyelegant.com">
+        <fileTransfer accessType="FTPS" host="ftp.insanelyelegant.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

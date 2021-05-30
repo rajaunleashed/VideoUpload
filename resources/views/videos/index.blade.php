@@ -1,10 +1,5 @@
 @extends('layouts.default')
 @section('content')
-    @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-    @endif
     <div class="container mt-5">
         <div class="d-flex flex-column justify-content-center">
             <div class="row">

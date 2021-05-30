@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Video;
+use App\Jobs\ConvertionVideo;
 use App\Repositories\VideoRepository;
 use App\Services\VideoUploadService;
-use Illuminate\Http\Request;
+use FFMpeg\Format\Video\X264;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
 class VideoController extends Controller
 {
@@ -21,6 +23,7 @@ class VideoController extends Controller
     public function index()
     {
         $videos = $this->videoRepo->all();
+
         return view('videos.index', compact('videos'));
     }
 
@@ -30,8 +33,9 @@ class VideoController extends Controller
 
             $path = $this->videoService->upload($request->file('file'));
             $request->request->add(['file_path' => $path]);
-            $this->videoRepo->store($request->except('file'));
+            $video = $this->videoRepo->store($request->except('file'));
 
+            ConvertionVideo::dispatch($video);
             session()->flash('success', 'Video uploaded successfully');
             return redirect()->to('videos');
 
@@ -40,4 +44,5 @@ class VideoController extends Controller
             return redirect()->back()->withInput();
         }
     }
+
 }
